@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ManiListAdapter : RecyclerView.Adapter<ManiListAdapter.ViewHolder>() {
     private val list = MainListItems.ITEMS
 
-    override fun onCreateViewHolder(parent: ViewGroup, index: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val root = LayoutInflater.from(context).inflate(R.layout.main_list_item_layout, parent, false)
         return ViewHolder(root)
