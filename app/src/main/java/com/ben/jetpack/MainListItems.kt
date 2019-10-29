@@ -1,6 +1,7 @@
 package com.ben.jetpack
 
 import com.ben.jetpack.livedata.LiveDataActivity
+import com.ben.jetpack.viewmodel.ViewModelActivity
 
 /**
  * 主界面列表选项
@@ -14,6 +15,7 @@ object MainListItems {
 
     init {
         addItem(Item(LiveDataActivity::class.java, "LiveData"))
+        addItem(Item(ViewModelActivity::class.java, "ViewModel"))
     }
 
     private fun addItem(item: Item) {
