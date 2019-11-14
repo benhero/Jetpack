@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -30,4 +31,12 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+
+    implementation 'androidx.room:room-runtime:2.2.1'
+    // For Kotlin use kapt instead of annotationProcessor
+    annotationProcessor 'androidx.room:room-compiler:2.2.1'
+    // optional - Kotlin Extensions and Coroutines support for Room
+    kapt 'androidx.room:room-compiler:2.2.1'
+    implementation 'androidx.room:room-ktx:2.2.1'
+    implementation 'androidx.room:room-runtime:2.2.1'
 }
