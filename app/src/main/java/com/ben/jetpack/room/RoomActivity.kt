@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.room_user_item.view.*
 
 class RoomActivity : AppCompatActivity(), View.OnClickListener {
 
+    private val names = listOf("Jame", "June", "Carry", "Tom", "Tim", "Jake", "Zim", "Fake", "Kris")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
@@ -47,18 +49,17 @@ class RoomActivity : AppCompatActivity(), View.OnClickListener {
     private fun addAge() {
         Thread {
             val userDao = AppDatabase.getInstance(this.applicationContext).getUserDao()
-            val users = userDao.getUsers()
-            val list = if (users.value != null) users.value else mutableListOf()
-            list!!.forEach {
+            val users = userDao.getUserList()
+            users.forEach {
                 it.age = it.age + 1
             }
-            userDao.insertUserList(list)
+            userDao.insertUserList(users)
         }.start()
     }
 
     private fun addUser() {
         Thread {
-            val user = User(System.currentTimeMillis().toInt(), "Jim", 1)
+            val user = User(System.currentTimeMillis().toInt(), names.random(), 1)
             AppDatabase.getInstance(this.applicationContext).getUserDao().insertUser(user)
         }.start()
     }

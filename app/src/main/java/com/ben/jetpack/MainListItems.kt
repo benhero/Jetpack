@@ -1,6 +1,7 @@
 package com.ben.jetpack
 
 import com.ben.jetpack.livedata.LiveDataActivity
+import com.ben.jetpack.room.RoomActivity
 import com.ben.jetpack.viewmodel.ViewModelActivity
 
 /**
@@ -16,6 +17,7 @@ object MainListItems {
     init {
         addItem(Item(LiveDataActivity::class.java, "LiveData"))
         addItem(Item(ViewModelActivity::class.java, "ViewModel"))
+        addItem(Item(RoomActivity::class.java, "Room"))
     }
 
     private fun addItem(item: Item) {
