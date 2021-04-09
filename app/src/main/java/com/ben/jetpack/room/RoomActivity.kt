@@ -1,6 +1,8 @@
 package com.ben.jetpack.room
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +21,12 @@ class RoomActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_room)
         room_user_btn.setOnClickListener(this)
         room_age_btn.setOnClickListener(this)
+        Log.i("JKL", "RoomActivity - onCreate: ")
 
         val users = AppDatabase.getInstance(this.applicationContext).getUserDao().getUsers()
         users.observe(this, Observer<List<User>> { list ->
             room_user_list.removeAllViews()
+            Log.i("JKL", "onCreate: " + list.size)
             list.forEach {
                 val layout = LayoutInflater.from(this).inflate(R.layout.room_user_item, room_user_list, false)
                 layout.room_item_name.text = it.name
@@ -31,6 +35,7 @@ class RoomActivity : AppCompatActivity(), View.OnClickListener {
                 root.addView(layout)
             }
         })
+        btn_room2.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -40,6 +45,9 @@ class RoomActivity : AppCompatActivity(), View.OnClickListener {
             }
             room_age_btn -> {
                 addAge()
+            }
+            btn_room2 -> {
+                startActivity(Intent(this, RoomActivity2::class.java))
             }
             else -> {
             }
